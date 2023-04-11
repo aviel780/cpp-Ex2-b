@@ -19,7 +19,7 @@ class Game{
         void playTurn();
         void printLastTurn();
         void playAll();
-        void printWiner();
+        void Game::printWiner();
         void printLog();
         void printStats();
 

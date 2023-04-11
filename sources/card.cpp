@@ -39,7 +39,7 @@ class card{
         if(this->value == 13){
             return "played King of" + this->sigen;
         }
-        return "played" + this->value + "of" + this->sigen;
+        return "played" + std::to_string(this->value) + "of" + this->sigen;
 
 
 

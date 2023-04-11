@@ -3,6 +3,9 @@
 
 #include <string>
 #include <stdio.h>
+#include <vector>
+#include"card.hpp"
+
 
 namespace ariel{
 
@@ -11,9 +14,14 @@ namespace ariel{
 class Player{
     private:
 
-        std::string name;
-        // int stacksize;
-        // int cardtaken;
+    string name;
+    vector<card> cards;
+    int cardes_Taken;
+    int id ;
+    int cardsWon ;
+    int numwingames ;
+    int numdraw ;
+    int numgames ;
 
     public:
 
@@ -24,7 +32,11 @@ class Player{
 
         int stacksize();
 
-        int cardesTaken();   
+        int cardesTaken();
+
+        void addcard(card c);  
+
+        card takecard(); 
 
 };
 }
