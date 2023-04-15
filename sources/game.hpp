@@ -10,16 +10,18 @@ namespace ariel
 {
 class Game{
     private:
-    Player player1;
-    Player player2;
+    Player &p1;
+    Player &p2;
+    string lasturn;
+    string log;
 
     public:
-        Game(Player player1, Player player2);
+        Game(Player& player1, Player& player2);
 
         void playTurn();
         void printLastTurn();
         void playAll();
-        void Game::printWiner();
+        void printWiner();
         void printLog();
         void printStats();
 

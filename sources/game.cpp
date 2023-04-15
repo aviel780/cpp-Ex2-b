@@ -1,26 +1,25 @@
 #include<iostream>
+#include "player.hpp"
 #include "game.hpp"
-#include "card.cpp"
+#include "card.hpp"
 #include <algorithm>
 #include <random>
 using namespace ariel;
 using namespace std;
 
 namespace ariel
-{   Player p1;
-    Player p2;
-    string lasturn;
+{   
 
-    Game::Game(Player playe1, Player playe2)
-    :player1(playe1), player2(playe2){
+    Game::Game(Player &play1, Player &play2) : p1(play1), p2(play2){
+    
 
-         vector<card> pack(52);
+         vector<Card> pack;
         for (int i = 1; i <= 13; i++)
         {
-            pack.push_back(card(i, "clubs"));
-            pack.push_back(card(i, "diamonds"));
-            pack.push_back(card(i, "hearts"));
-            pack.push_back(card(i, "spades"));
+            pack.push_back(Card(i,"clubs"));
+            pack.push_back(Card(i,"diamonds"));
+            pack.push_back(Card(i,"hearts"));
+            pack.push_back(Card(i,"spades"));
         }
 
         std::random_device rd;
@@ -29,33 +28,42 @@ namespace ariel
 
         for (int i = 0; i < 52; i= i+2)
         {
-            player1.addcard(pack[(unsigned int)i]);
+            p1.addcard(pack[(unsigned int)i]);
         }
 
         for (int i = 1; i <= 52; i= i+2)
         {
-            player2.addcard(pack[(unsigned int)i]);
+            p2.addcard(pack[(unsigned int)i]);
         }}
 
 
-    
-
     void Game::playTurn(){
+        if (&p1 == &p2)
+        {
+            throw "palyer cnot play aginst him self";
+        }
+        
+        if (p1.stacksize() ==0|| p2.stacksize()==0)
+        {
+            throw "game over - no more cards";
+        }
+        
+        string lasturn = "";
         string winner = "";
         int num_of_cards= 2;
-        card cp1 = p1.takecard();
-        card cp2 = p2.takecard();
-        if (cp1.getsigen() == "over")
-        {
-            printWiner();
+        Card cp1 = p1.takecard();
+        Card cp2 = p2.takecard();
+        // cout<<cp1.getvalue()<<"!!!!"<<cp2.getvalue()<<endl;
+        // if (cp1.getsigen() == "over")
+        // {
+        //     printWiner();
+        //     return;
             
-        }
-        if (cp2.getsigen() == "over"){
+        // }
+        // if (cp2.getsigen() == "over"){
             
-            printWiner();}
-            
-        
-        //Alice played Queen of Hearts Bob played 5 of Spades. Alice wins.
+        //     printWiner();
+        //     return;}
         if (cp1.getvalue() > cp2.getvalue()){
             winner = p1.getName();
             p1.setcardstaken(num_of_cards);
@@ -69,10 +77,11 @@ namespace ariel
             winner = "draw";
             p1.takecard();
             p2.takecard();
-            card cp1 = p1.takecard();
-            card cp2 = p2.takecard();
+            cp1 = p1.takecard();
+            cp2 = p2.takecard();
             lasturn = lasturn + p1.getName() + cp1.card_tostring() + p2.getName()+cp2.card_tostring() + winner;
-            num_of_cards += 2 ;
+            log+= lasturn;
+            num_of_cards += 4 ;
 
             if (cp1.getvalue() > cp2.getvalue()){
             winner = p1.getName();
@@ -86,12 +95,19 @@ namespace ariel
         }
         
         lasturn = p1.getName() + cp1.card_tostring() + p2.getName()+cp2.card_tostring() + winner;
-
+        log+= lasturn;
     }
+
     void Game::printLastTurn(){
         cout<<lasturn<<endl;
     }
-    void Game::playAll(){}
+    void Game::playAll(){
+        while (p1.stacksize()>0 ||p2.stacksize()>0)
+        {
+            playTurn();
+        }
+        
+    }
     void Game::printWiner(){
         if (p1.cardesTaken() > p2.cardesTaken())
         {

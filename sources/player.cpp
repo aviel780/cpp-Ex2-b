@@ -7,7 +7,7 @@ using namespace std;
 
 namespace ariel{
     
-     vector<card> cards(26);
+     vector<Card> cards;
   
     Player::Player(std::string n){
         this->name = n;
@@ -23,6 +23,11 @@ namespace ariel{
         return this->name;
     }
 
+    void Player::setcardstaken(int abc){
+        this->cardsWon += abc;
+
+    }
+
     int Player::stacksize(){
         return cards.size();
     }
@@ -31,22 +36,28 @@ namespace ariel{
         return this->cardsWon;
     }
 
-    void addcard(card c){
-        cards.push_back(c);
+    void Player::addcard(Card carr){
+        cards.push_back(carr);
     }
 
-    card takecard(){
-        if (cards.size() == 0)
-        {
-            card win = card (100,"over");
-            return win;
-        }
-        else{
-            card pick = cards.back();
-            cards.pop_back();
-            return pick;
-        }
+    Card Player::takecard(){
+        // if (cards.size() == 0)
+        // {
+        //     Card win = Card (100,"over");
+        //     return win;
+        // }
+        // else{
+        // cout<<stacksize()<<endl;
+        Card pick = cards.back();
+        cards.pop_back();
+        // cout<<pick.getvalue()<<"poping out"<<endl;
+        // cout<<stacksize()<<endl;
+        
+        return pick;
+        // }
         
     }
 
-} // namespace arielbash
+    
+
+} // namespace ariel

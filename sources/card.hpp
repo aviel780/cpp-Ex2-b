@@ -1,22 +1,24 @@
-#ifndef Card_hpp
-#define Card_hpp
+#ifndef card_hpp
+#define card_hpp
+#include <iostream>
 #include "string"
 using namespace std;
 namespace ariel
 {
-class card{
+class Card{
+    
     int value;
     std::string sigen;
 
     public:
 
-    card(int x , string y);
+    Card(int xcard , string ycard);
 
-    ~card();
+    
 
     int getvalue();
     string getsigen();
-     string card_tostring();
+    string card_tostring();
 };
 }
 #endif //Card_hpp

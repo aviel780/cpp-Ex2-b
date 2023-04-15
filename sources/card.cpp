@@ -1,32 +1,24 @@
-#ifndef Card_hpp
-#define Card_cpp
-#include <iostream>
-
+#ifndef card_cpp
+#define card_cpp
+#include "card.hpp"
 #include "string"
 using namespace std;
-namespace ariel
-{
-class card{
-    int value;
-    std::string sigen;
+using namespace ariel;
 
-    public:
+Card::Card(int xcard , string ycard){
+        this->value = xcard;
+        this->sigen = ycard;  
+}
 
-    card(int x , string y){
-        value = x;
-        sigen = y;  
-    }
-
-    ~card();
-
-    int getvalue(){
+int Card::getvalue(){
         return value;
     }
 
-    string getsigen(){
+string Card::getsigen(){
         return sigen;
     }
-    string card_tostring(){
+
+string Card::card_tostring(){
         if(this->value == 1){
             return "played Ace of" + this->sigen;
         }
@@ -40,14 +32,6 @@ class card{
             return "played King of" + this->sigen;
         }
         return "played" + std::to_string(this->value) + "of" + this->sigen;
-
-
-
     }
-};
-
-
-
- }
 
 #endif

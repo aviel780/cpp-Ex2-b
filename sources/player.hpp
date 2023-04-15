@@ -15,7 +15,7 @@ class Player{
     private:
 
     string name;
-    vector<card> cards;
+    vector<Card> cards;
     int cardes_Taken;
     int id ;
     int cardsWon ;
@@ -30,13 +30,15 @@ class Player{
 
         std::string getName();
 
+        void setcardstaken(int atake);
+
         int stacksize();
 
         int cardesTaken();
 
-        void addcard(card c);  
+        void addcard(Card ccard);  
 
-        card takecard(); 
+        Card takecard(); 
 
 };
 }
