@@ -14,8 +14,8 @@ namespace ariel{
         this->id = id+1;
         this->cardsWon=0;
         this->numwingames =0;
-        this->numdraw = 0;
-        this->numgames = 0;
+        this->numdrawgames = 0;
+        
         
     }
 
@@ -27,6 +27,14 @@ namespace ariel{
         this->cardsWon += abc;
 
     }
+    void Player::setwingames(int win){
+        this->numwingames+= win;
+    }
+
+    void Player::setdrawgames(int draw){
+        this->numdrawgames+= draw;
+    }
+    
 
     int Player::stacksize(){
         return cards.size();
@@ -38,6 +46,15 @@ namespace ariel{
 
     void Player::addcard(Card carr){
         cards.push_back(carr);
+    }
+    int Player::getcardstaken(){
+        return cardsWon;
+    }
+    int Player::getwingames(){
+        return numwingames;
+    }
+    int Player::getdrawgames(){
+        return numdrawgames;
     }
 
     Card Player::takecard(){

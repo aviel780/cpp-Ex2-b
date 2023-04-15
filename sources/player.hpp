@@ -20,17 +20,24 @@ class Player{
     int id ;
     int cardsWon ;
     int numwingames ;
-    int numdraw ;
-    int numgames ;
+    int numdrawgames ;
+    
 
     public:
 
-        
+
         Player(std::string name);
 
         std::string getName();
 
         void setcardstaken(int atake);
+        void setwingames(int atake);
+        void setdrawgames(int atake);
+
+        int getcardstaken();
+        int getwingames();
+        int getdrawgames();
+        
 
         int stacksize();
 

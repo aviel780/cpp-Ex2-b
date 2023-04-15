@@ -67,10 +67,12 @@ namespace ariel
         if (cp1.getvalue() > cp2.getvalue()){
             winner = p1.getName();
             p1.setcardstaken(num_of_cards);
+            p1.setwingames(1);
         }
         if (cp2.getvalue() > cp1.getvalue()){
             winner = p2.getName();
             p2.setcardstaken(num_of_cards);
+            p2.setwingames(1);
         }
         while (cp1.getvalue() == cp2.getvalue())
         {
@@ -79,6 +81,8 @@ namespace ariel
             p2.takecard();
             cp1 = p1.takecard();
             cp2 = p2.takecard();
+            p1.setdrawgames(1);
+            p2.setdrawgames(1);
             lasturn = lasturn + p1.getName() + cp1.card_tostring() + p2.getName()+cp2.card_tostring() + winner;
             log+= lasturn;
             num_of_cards += 4 ;
@@ -123,8 +127,13 @@ namespace ariel
         }
         
     }
-    void Game::printLog(){}
-    void Game::printStats(){}
+    void Game::printLog(){
+        cout<<log<<endl;
+    }
+    void Game::printStats(){
+        cout<<p1.getName()<<"win in"<<p1.getwingames()<<"games, win in"<<p1.getcardstaken()<<"cardes and finish in draw in"<<p1.getdrawgames()<<"games"<<endl;
+        cout<<p2.getName()<<"win in"<<p2.getwingames()<<"games, win in"<<p2.getcardstaken()<<"cardes and finish in draw in"<<p2.getdrawgames()<<"games"<<endl;
+    }
     
 
 }; // namespace ariel
