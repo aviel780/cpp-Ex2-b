@@ -76,6 +76,9 @@ namespace ariel
         }
         while (cp1.getvalue() == cp2.getvalue())
         {
+            // if(p1.stacksize() ==0 ||p2.stacksize() == 0){
+            //     return;
+            // }
             winner = "draw";
             p1.takecard();
             p2.takecard();
@@ -83,7 +86,7 @@ namespace ariel
             cp2 = p2.takecard();
             p1.setdrawgames(1);
             p2.setdrawgames(1);
-            lasturn = lasturn + p1.getName() + cp1.card_tostring() + p2.getName()+cp2.card_tostring() + winner;
+            lasturn = lasturn+ " " + p1.getName()+ " " + cp1.card_tostring() + p2.getName()+ " "+cp2.card_tostring() +" " +  winner + " win the war ";
             log+= lasturn;
             num_of_cards += 4 ;
 
@@ -98,7 +101,7 @@ namespace ariel
             
         }
         
-        lasturn = p1.getName() + cp1.card_tostring() + p2.getName()+cp2.card_tostring() + winner;
+        lasturn = p1.getName()+ " " + cp1.card_tostring() + p2.getName()+ " "+cp2.card_tostring() +" " +  winner + " win the war ";
         log+= lasturn;
     }
 
@@ -115,15 +118,15 @@ namespace ariel
     void Game::printWiner(){
         if (p1.cardesTaken() > p2.cardesTaken())
         {
-            cout<< p1.getName() + "won the game"<<endl;
+            cout<< p1.getName() + " won the game"<<endl;
         }
         if (p2.cardesTaken() > p1.cardesTaken())
         {
-            cout<< p2.getName() + "won the game"<<endl;
+            cout<< p2.getName() + " won the game"<<endl;
         }
         if (p1.cardesTaken() == p2.cardesTaken())
         {
-            cout<<"draw betwwen" + p1.getName() +"and" +p2.getName() <<endl;
+            cout<<"draw betwwen " + p1.getName() +" and " +p2.getName() <<endl;
         }
         
     }
@@ -131,8 +134,8 @@ namespace ariel
         cout<<log<<endl;
     }
     void Game::printStats(){
-        cout<<p1.getName()<<"win in"<<p1.getwingames()<<"games, win in"<<p1.getcardstaken()<<"cardes and finish in draw in"<<p1.getdrawgames()<<"games"<<endl;
-        cout<<p2.getName()<<"win in"<<p2.getwingames()<<"games, win in"<<p2.getcardstaken()<<"cardes and finish in draw in"<<p2.getdrawgames()<<"games"<<endl;
+        cout<<p1.getName()<<" win in "<<p1.getwingames()<<" games, win in "<<p1.getcardstaken()<<" cardes and finish in draw in "<<p1.getdrawgames()<<" games"<<endl;
+        cout<<p2.getName()<<" win in "<<p2.getwingames()<<" games, win in "<<p2.getcardstaken()<<" cardes and finish in draw in "<<p2.getdrawgames()<<" games"<<endl;
     }
     
 

@@ -17,7 +17,7 @@ class Player{
     string name;
     vector<Card> cards;
     int cardes_Taken;
-    int id ;
+    // int id ;
     int cardsWon ;
     int numwingames ;
     int numdrawgames ;

@@ -11,7 +11,7 @@ namespace ariel{
   
     Player::Player(std::string n){
         this->name = n;
-        this->id = id+1;
+        // this->id = id+1;
         this->cardsWon=0;
         this->numwingames =0;
         this->numdrawgames = 0;
